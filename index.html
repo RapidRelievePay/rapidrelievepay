@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RapidRelievePay — Get treated today. Pay later, safely.</title>
+<meta name="description" content="RapidRelievePay is an AI-powered WhatsApp assistant that pays Nigerian hospital bills directly, so patients get treated today and repay later.">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  --bg: #ffffff; --bg2: #f3f8f8; --text: #14292b; --muted: #4a6466;
+  --brand: #0d6e6e; --brand-dark: #094f4f; --on-brand: #ffffff;
+  --accent: #d4a843; --card: #ffffff; --line: #d9e6e6; --hero: #094f4f; --hero-text: #ffffff; --hero-muted: #b4dada;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0c1a1b; --bg2: #112325; --text: #e6f2f2; --muted: #9bb7b8;
+    --brand: #3fb5b5; --brand-dark: #2a8f8f; --on-brand: #06201f;
+    --card: #142a2c; --line: #234143; --hero: #0a2b2c; --hero-text: #ffffff; --hero-muted: #a6cfcf;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c1a1b; --bg2: #112325; --text: #e6f2f2; --muted: #9bb7b8;
+  --brand: #3fb5b5; --brand-dark: #2a8f8f; --on-brand: #06201f;
+  --card: #142a2c; --line: #234143; --hero: #0a2b2c; --hero-text: #ffffff; --hero-muted: #a6cfcf;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; line-height: 1.6; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5em; }
+h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+p { margin: 0 0 1em; }
+.nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+.logo { font-weight: 800; font-size: 1.15rem; color: var(--hero-text); text-decoration: none; }
+.nav a.cta-sm { color: var(--hero-text); border: 1px solid var(--hero-muted); padding: 8px 14px; border-radius: 999px; text-decoration: none; font-size: .9rem; }
+header.hero { background: var(--hero); color: var(--hero-text); padding-bottom: 64px; }
+.tag { display: inline-block; background: var(--accent); color: #2b2100; font-weight: 700; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; }
+.hero h1 { font-size: clamp(2.1rem, 7vw, 3.6rem); margin: 20px 0 16px; max-width: 14em; }
+.hero p.lead { font-size: clamp(1.05rem, 2.5vw, 1.25rem); color: var(--hero-muted); max-width: 36em; }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.btn { display: inline-block; padding: 13px 22px; border-radius: 10px; font-weight: 700; text-decoration: none; }
+.btn.primary { background: var(--accent); color: #2b2100; }
+.btn.ghost { border: 1px solid var(--hero-muted); color: var(--hero-text); }
+section { padding: 56px 0; }
+section.alt { background: var(--bg2); }
+.kicker { color: var(--brand); font-weight: 700; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 24px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.stat { font-size: 2.4rem; font-weight: 800; color: var(--brand); line-height: 1; margin-bottom: 8px; }
+.num { width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: var(--on-brand); display: grid; place-items: center; font-weight: 800; margin-bottom: 12px; }
+.card h3 { font-size: 1.05rem; }
+.card p { color: var(--muted); margin: 0; font-size: .95rem; }
+.status { border-left: 4px solid var(--accent); padding: 4px 0 4px 16px; margin-top: 16px; color: var(--muted); }
+.two { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+ul.clean { padding-left: 1.1em; margin: 0; color: var(--muted); }
+ul.clean li { margin-bottom: 8px; }
+.team .card { text-align: left; }
+.avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--brand); color: var(--on-brand); display: grid; place-items: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 12px; }
+.role { color: var(--brand); font-weight: 700; font-size: .85rem; margin: 0 0 8px; }
+footer { background: var(--hero); color: var(--hero-muted); padding: 32px 0; font-size: .9rem; }
+footer a { color: var(--hero-text); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="logo" href="#top">RapidRelievePay</a>
+      <a class="cta-sm" href="#contact">Get in touch</a>
+    </nav>
+    <span class="tag">Pre-launch · Lagos, Nigeria</span>
+    <h1 id="top">Get treated today. Pay later, safely.</h1>
+    <p class="lead">RapidRelievePay is an AI-powered WhatsApp assistant that pays a patient’s hospital bill directly, so no one has to delay or abandon care because they can’t pay upfront.</p>
+    <div class="btns">
+      <a class="btn primary" href="#how">See how it works</a>
+      <a class="btn ghost" href="#contact">Partner with us</a>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="kicker">The problem</div>
+    <h2>The bill arrives before the treatment does.</h2>
+    <p style="max-width:40em;color:var(--muted)">In Nigeria, the moment a patient is handed a bill they can’t pay is often the moment treatment stops. Bank loans are too slow, loan apps send cash to the patient instead of the hospital, and most people have no insurance.</p>
+    <div class="grid">
+      <div class="card"><div class="stat">76%</div><p>of health spending in Nigeria is paid out of pocket.</p></div>
+      <div class="card"><div class="stat">~10%</div><p>of Nigerians are covered by any form of health insurance.</p></div>
+      <div class="card"><div class="stat">95%</div><p>of Nigeria’s online population uses WhatsApp, the highest rate in the world.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <div class="kicker">How it works</div>
+    <h2>Four steps, all inside WhatsApp.</h2>
+    <div class="grid">
+      <div class="card"><div class="num">1</div><h3>Start a chat</h3><p>At a partner hospital, the patient messages the RapidRelievePay assistant. No app to download.</p></div>
+      <div class="card"><div class="num">2</div><h3>AI intake</h3><p>The assistant collects details and reads the hospital invoice, in English or Nigerian Pidgin.</p></div>
+      <div class="card"><div class="num">3</div><h3>Fast decision</h3><p>A credit check built for Nigeria’s informal sector returns a decision in minutes.</p></div>
+      <div class="card"><div class="num">4</div><h3>Hospital paid directly</h3><p>Funds go to the hospital, never the patient. The patient repays over 30–60 days with a flat, fixed fee.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="kicker">What makes us different</div>
+    <h2>Built for the moment of care.</h2>
+    <div class="grid">
+      <div class="card"><h3>WhatsApp-native</h3><p>Meets people on the app they already use every day.</p></div>
+      <div class="card"><h3>Hospital-direct payment</h3><p>Money is purpose-locked to treatment, so it can’t be redirected.</p></div>
+      <div class="card"><h3>Flat fee, no compounding interest</h3><p>The total repayment is clear from day one.</p></div>
+      <div class="card"><h3>Credit model for thin files</h3><p>Weighs clinical urgency and hospital referral, not just bureau history.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="who" class="alt">
+  <div class="wrap two">
+    <div>
+      <div class="kicker">Who we serve</div>
+      <h2>Patients</h2>
+      <ul class="clean">
+        <li>Working Nigerians in the informal and lower-formal economy: traders, artisans, drivers, tailors, small business owners.</li>
+        <li>People without health insurance who face sudden medical bills.</li>
+        <li>Active on WhatsApp, but unlikely to download finance apps.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="kicker">&nbsp;</div>
+      <h2>Hospitals &amp; clinics</h2>
+      <ul class="clean">
+        <li>Private and mission hospitals that absorb bad debt or turn patients away.</li>
+        <li>Same-day payment for treatments that would otherwise be delayed.</li>
+        <li>No cost to join as a partner.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="team">
+  <div class="wrap">
+    <div class="kicker">The team</div>
+    <h2>The people building RapidRelievePay.</h2>
+    <div class="grid">
+      <div class="card"><div class="avatar">F</div><h3>Victor Oduntan</h3><p class="role">Founder</p><p>BSc Physiology, University of Lagos. Conceived RapidRelievePay and Leads vision, product design, hospital partnerships and fundraising.</p></div>
+      <div class="card"><div class="avatar">C</div><h3>Adeboye Adedayo</h3><p class="role">Co-founder</p><p>BSc Biochemistry, University of Lagos. Leads the research behind our risk framework and partnerships with diagnostic labs.</p></div>
+      <div class="card"><div class="avatar">C</div><h3>Ojobor Melchizedec</h3><p class="role">Co-founder</p><p>BSc Physiology, University of Lagos. Runs day-to-day operations, patient onboarding and repayment follow-up.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="status" class="alt">
+  <div class="wrap">
+    <div class="kicker">Where we are</div>
+    <h2>Early stage, building in the open.</h2>
+    <div class="grid">
+      <div class="card"><h3>Now</h3><p>Validating the model, designing the credit framework, and preparing the WhatsApp assistant.</p></div>
+      <div class="card"><h3>Next 90 days</h3><p>Sign first hospital partners and run a manual pilot with a small number of patients.</p></div>
+      <div class="card"><h3>Then</h3><p>Automate with AI, expand partner hospitals, and build toward broader financial inclusion.</p></div>
+    </div>
+    <p class="status">RapidRelievePay is pre-revenue and currently in the process of formal registration in Nigeria.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="kicker">Contact</div>
+    <h2>Let’s talk.</h2>
+    <p style="color:var(--muted);max-width:36em">Interested in partnering, piloting, or supporting RapidRelievePay? Reach out to the founder.</p>
+    <div class="btns">
+      <a class="btn primary" style="background:var(--brand);color:var(--on-brand)" href="mailto:YOUR-EMAIL@example.com">victoroduntan27@gmail.com</a>
+    </div>
+    <p style="margin-top:16px;color:var(--muted)"><div class="btns">
+  <a class="btn primary" style="background:var(--brand);color:var(--on-brand)"
+     href="https://wa.me/2347063617064?text=Hello%20RapidRelievePay%2C%20I%27d%20like%20to%20learn%20more.">
+     Chat with us on WhatsApp</a>
+</div></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 RapidRelievePay. All rights reserved. RapidRelievePay is a financing facilitation concept in development and does not provide medical advice.</div>
+</footer>
+
+</body>
+</html>
